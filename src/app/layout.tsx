@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -23,11 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="text-base">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${merriweather.variable} ${openSans.variable} antialiased font-body bg-base text-text`}
       >
         {children}
+        <header className="w-full flex justify-center items-center fixed top-3">
+          <Navbar />
+        </header>
       </body>
     </html>
   );
